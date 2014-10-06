@@ -13,21 +13,27 @@ public class NavigationToggle extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         try {
-            if (action.equals("show") && !this.statusBarIsShown) {
-                // TODO
-
-                this.statusBarIsShown = false;
-            }
-            else if (action.equals("hide") && this.statusBarIsShown) {
-                Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "service call activity 42 s16 com.android.systemui" }); 
-                proc.waitFor();
-
-                this.statusBarIsShown = false;
-            }
+            Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "service call activity 42 s16 com.android.systemui" }); 
+            proc.waitFor();
         }
-        catch (Exception exception) {
-            // Do nothing.
-        }
+        catch (Exception e) {}
+
+        // try {
+        //     if (action.equals("show") && !this.statusBarIsShown) {
+        //         // TODO
+
+        //         this.statusBarIsShown = false;
+        //     }
+        //     else if (action.equals("hide") && this.statusBarIsShown) {
+        //         Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "service call activity 42 s16 com.android.systemui" }); 
+        //         proc.waitFor();
+
+        //         this.statusBarIsShown = false;
+        //     }
+        // }
+        // catch (Exception e) {
+        //     // Do nothing.
+        // }
 
         PluginResult result = new PluginResult(PluginResult.Status.NO_RESULT, "");
         result.setKeepCallback(true);
