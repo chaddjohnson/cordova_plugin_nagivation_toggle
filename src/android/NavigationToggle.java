@@ -14,7 +14,8 @@ public class NavigationToggle extends CordovaPlugin {
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         try {
             if (action.equals("show")) {
-                // TODO
+                Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "am startservice --user 0 -n com.android.systemui/.SystemUIService" }); 
+                proc.waitFor();
 
                 this.statusBarIsShown = false;
             }
