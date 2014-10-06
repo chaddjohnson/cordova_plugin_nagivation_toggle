@@ -39,7 +39,7 @@ public class NavigationToggle extends CordovaPlugin {
             Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "LD_LIBRARY_PATH=/vendor/lib:/system/lib am startservice -n com.android.systemui/.SystemUIService" }); 
             proc.waitFor();
 
-            this.navigationBarIsShown = false;
+            this.navigationBarIsShown = true;
         }
         catch (Exception e) {
             callbackContext.error(e.getMessage());
