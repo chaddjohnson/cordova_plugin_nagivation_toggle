@@ -4,7 +4,6 @@ var navigationToggle = {
             function() {
                 alert('shown');
             }, function(error) {
-                alert('error showing');
                 alert(error);
             },
             'NagivationToggle', 'show', []);
@@ -14,7 +13,6 @@ var navigationToggle = {
             function() {
                 alert('hidden');
             }, function(error) {
-                alert('error hiding');
                 alert(error);
             },
             'NagivationToggle', 'hide', []);
