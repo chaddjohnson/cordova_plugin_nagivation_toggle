@@ -13,17 +13,17 @@ public class NavigationToggle extends CordovaPlugin {
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("show") && !this.navigationBarIsShown) {
-            showNavigationBar();
+            showNavigationBar(callbackContext);
         }
         else if (action.equals("hide") && this.navigationBarIsShown) {
-            hideNavigationBar();
+            hideNavigationBar(callbackContext);
         }
         else if (action.equals("toggle")) {
             if (this.navigationBarIsShown) {
-                this.hideNavigationBar();
+                this.hideNavigationBar(callbackContext);
             }
             else {
-                this.showNavigationBar();
+                this.showNavigationBar(callbackContext);
             }
         }
 
