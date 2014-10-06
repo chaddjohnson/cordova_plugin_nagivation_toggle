@@ -12,26 +12,19 @@ public class NavigationToggle extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
-        try {
-            if (action.equals("show") && !this.navigationBarIsShown) {
-                showNavigationBar();
-            }
-            else if (action.equals("hide") && this.navigationBarIsShown) {
-                hideNavigationBar();
-            }
-            else if (action.equals("toggle")) {
-                if (this.navigationBarIsShown) {
-                    this.hideNavigationBar();
-                }
-                else {
-                    this.showNavigationBar();
-                }
-            }
+        if (action.equals("show") && !this.navigationBarIsShown) {
+            showNavigationBar();
         }
-        catch (Exception e) {
-            // Do nothing.
-            callbackContext.error(e.getMessage());
-            return false;
+        else if (action.equals("hide") && this.navigationBarIsShown) {
+            hideNavigationBar();
+        }
+        else if (action.equals("toggle")) {
+            if (this.navigationBarIsShown) {
+                this.hideNavigationBar();
+            }
+            else {
+                this.showNavigationBar();
+            }
         }
 
         // PluginResult result = new PluginResult(PluginResult.Status.NO_RESULT, "");
@@ -42,16 +35,30 @@ public class NavigationToggle extends CordovaPlugin {
     }
 
     private void showNavigationBar() {
-        Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "am startservice --user 0 -n com.android.systemui/.SystemUIService" }); 
-        proc.waitFor();
+        try {
+            Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "am startservice --user 0 -n com.android.systemui/.SystemUIService" }); 
+            proc.waitFor();
 
-        this.navigationBarIsShown = false;
+            this.navigationBarIsShown = false;
+        }
+        catch (Exception e) {
+            // Do nothing.
+            callbackContext.error(e.getMessage());
+            return false;
+        }
     }
 
     private void hideNavigationBar() {
-        Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "service call activity 42 s16 com.android.systemui" }); 
-        proc.waitFor();
+        try {
+            Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "service call activity 42 s16 com.android.systemui" }); 
+            proc.waitFor();
 
-        this.navigationBarIsShown = false;
+            this.navigationBarIsShown = false;
+        }
+        catch (Exception e) {
+            // Do nothing.
+            callbackContext.error(e.getMessage());
+            return false;
+        }
     }
 }
