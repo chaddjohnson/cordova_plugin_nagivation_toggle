@@ -24,7 +24,7 @@ public class NavigationToggle extends CordovaPlugin {
                 this.statusBarIsShown = false;
             }
         }
-        catch(Exception ex) {
+        catch (Exception exception) {
             // Do nothing.
         }
     }

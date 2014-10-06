@@ -2,7 +2,7 @@
  
 <plugin xmlns="http://www.phonegap.com/ns/plugins/1.0" id="org.bshmedia.navigationToggle"
       version="0.1.0">
-    <name>Calendar</name>
+    <name>NavigationToggle</name>
     <description>Cordova Navigation Toggle Plugin</description>
     <license>MIT</license>
     <keywords>cordova,navigation</keywords>
