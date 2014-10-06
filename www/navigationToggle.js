@@ -3,8 +3,9 @@ var navigationToggle = {
         cordova.exec(
             function() {
                 alert('shown');
-            }, function() {
+            }, function(error) {
                 alert('error showing');
+                alert(error);
             },
             'NagivationToggle', 'show', []);
     },
@@ -12,8 +13,9 @@ var navigationToggle = {
         cordova.exec(
             function() {
                 alert('hidden');
-            }, function() {
+            }, function(error) {
                 alert('error hiding');
+                alert(error);
             },
             'NagivationToggle', 'hide', []);
     }
