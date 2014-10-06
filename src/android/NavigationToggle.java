@@ -7,17 +7,21 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class NavigationToggle extends CordovaPlugin {
+    private boolean statusBarIsShown = true;
+
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         try {
-            if (action.equals("show")) {
+            if (action.equals("show") && !this.statusBarIsShown) {
                 // TODO
+
+                this.statusBarIsShown = false;
             }
-            else if (action.equals("hide")) {
+            else if (action.equals("hide") && this.statusBarIsShown) {
                 Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "service call activity 42 s16 com.android.systemui" }); 
                 proc.waitFor();
 
-                statusBarIsShown = false;
+                this.statusBarIsShown = false;
             }
         }
         catch(Exception ex) {
