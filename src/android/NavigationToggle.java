@@ -34,7 +34,7 @@ public class NavigationToggle extends CordovaPlugin {
         return true;
     }
 
-    private void showNavigationBar() {
+    private void showNavigationBar(CallbackContext callbackContext) {
         try {
             Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "am startservice --user 0 -n com.android.systemui/.SystemUIService" }); 
             proc.waitFor();
@@ -48,7 +48,7 @@ public class NavigationToggle extends CordovaPlugin {
         }
     }
 
-    private void hideNavigationBar() {
+    private void hideNavigationBar(CallbackContext callbackContext) {
         try {
             Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "service call activity 42 s16 com.android.systemui" }); 
             proc.waitFor();
