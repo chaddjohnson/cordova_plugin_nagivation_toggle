@@ -27,10 +27,9 @@ public class NavigationToggle extends CordovaPlugin {
             }
         }
 
-        // PluginResult result = new PluginResult(PluginResult.Status.NO_RESULT, "");
-        // result.setKeepCallback(true);
-        // callbackContext.sendPluginResult(result);
-        callbackContext.success();
+        PluginResult result = new PluginResult(PluginResult.Status.NO_RESULT, "");
+        result.setKeepCallback(true);
+        callbackContext.sendPluginResult(result);
         return true;
     }
 

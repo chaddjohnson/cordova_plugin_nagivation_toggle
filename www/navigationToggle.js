@@ -2,7 +2,7 @@ var navigationToggle = {
     show: function() {
         cordova.exec(
             function() {
-                alert('shown');
+                // Success; do nothing
             }, function(error) {
                 alert(error);
             },
@@ -11,7 +11,7 @@ var navigationToggle = {
     hide: function() {
         cordova.exec(
             function() {
-                alert('hidden');
+                // Success; do nothing
             }, function(error) {
                 alert(error);
             },
@@ -20,7 +20,7 @@ var navigationToggle = {
     toggle: function() {
         cordova.exec(
             function() {
-                alert('toggle');
+                // Success; do nothing
             }, function(error) {
                 alert(error);
             },
