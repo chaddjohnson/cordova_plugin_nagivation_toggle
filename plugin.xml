@@ -19,6 +19,6 @@
             </feature>
         </config-file>
  
-        <source-file src="src/android/NavigationToggle.java" target-dir="src/org/bsnmedia/navigationToggle" />      
+        <source-file src="src/android/NavigationToggle.java" target-dir="src/org/bshmedia/navigationToggle" />      
      </platform>          
 </plugin>`
