@@ -8,22 +8,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class NavigationToggle extends CordovaPlugin {
-    private boolean statusBarIsShown = true;
+    private boolean navigationBarIsShown = true;
 
     @Override
     public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
         try {
-            if (action.equals("show")) {
-                Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "am startservice --user 0 -n com.android.systemui/.SystemUIService" }); 
-                proc.waitFor();
-
-                this.statusBarIsShown = false;
+            if (action.equals("show") && !this.navigationBarIsShown) {
+                showNavigationBar();
             }
-            else if (action.equals("hide")) {
-                Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "service call activity 42 s16 com.android.systemui" }); 
-                proc.waitFor();
-
-                this.statusBarIsShown = false;
+            else if (action.equals("hide") && this.navigationBarIsShown) {
+                hideNavigationBar();
+            }
+            else if (action.equals("toggle")) {
+                if (this.navigationBarIsShown) {
+                    this.hideNavigationBar();
+                }
+                else {
+                    this.showNavigationBar();
+                }
             }
         }
         catch (Exception e) {
@@ -37,5 +39,19 @@ public class NavigationToggle extends CordovaPlugin {
         // callbackContext.sendPluginResult(result);
         callbackContext.success();
         return true;
+    }
+
+    private void showNavigationBar() {
+        Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "am startservice --user 0 -n com.android.systemui/.SystemUIService" }); 
+        proc.waitFor();
+
+        this.navigationBarIsShown = false;
+    }
+
+    private void hideNavigationBar() {
+        Process proc = Runtime.getRuntime().exec(new String[] { "su", "-c", "service call activity 42 s16 com.android.systemui" }); 
+        proc.waitFor();
+
+        this.navigationBarIsShown = false;
     }
 }

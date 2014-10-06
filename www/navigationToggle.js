@@ -16,6 +16,15 @@ var navigationToggle = {
                 alert(error);
             },
             'NavigationToggle', 'hide', []);
+    },
+    toggle: function() {
+        cordova.exec(
+            function() {
+                alert('toggle');
+            }, function(error) {
+                alert(error);
+            },
+            'NavigationToggle', 'toggle', []);
     }
 };
 
