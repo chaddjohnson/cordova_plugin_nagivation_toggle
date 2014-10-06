@@ -1,4 +1,4 @@
-package com.bshmedia.NavigationToggle;
+package com.bshmedia.navigationToggle;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
