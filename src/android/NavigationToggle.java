@@ -42,9 +42,7 @@ public class NavigationToggle extends CordovaPlugin {
             this.navigationBarIsShown = false;
         }
         catch (Exception e) {
-            // Do nothing.
             callbackContext.error(e.getMessage());
-            return false;
         }
     }
 
@@ -56,9 +54,7 @@ public class NavigationToggle extends CordovaPlugin {
             this.navigationBarIsShown = false;
         }
         catch (Exception e) {
-            // Do nothing.
             callbackContext.error(e.getMessage());
-            return false;
         }
     }
 }
